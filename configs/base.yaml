@@ -1,0 +1,14 @@
+data:
+  path: data/data_1.parquet
+
+training:
+  epochs: 50
+  batch_size: 64
+  lr: 0.001
+  pos_weight: 70.0
+  n_folds: 5
+
+model:
+  hidden_layers: [128, 64]
+  activations: ["relu", "relu"]
+

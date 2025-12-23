@@ -1,0 +1,22 @@
+# python
+__pycache__/
+*.pyc
+
+# envs
+.env
+.env.*
+*.conda
+*.env
+
+# data
+data/*.parquet
+data/*.csv
+
+# sweep outputs
+sweep_runs/
+
+# notebooks
+*.ipynb
+
+# OS
+.DS_Store
