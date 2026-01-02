@@ -1,0 +1,15 @@
+name: project
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pandas
+  - jupyter
+  - numpy
+  - matplotlib
+  - pytorch
+  - torchvision
+  - pytorch-cuda
+  - scikit-learn
+  - pyarrow
+prefix: C:\Users\zkarakaya\AppData\Local\miniforge3\envs\project
