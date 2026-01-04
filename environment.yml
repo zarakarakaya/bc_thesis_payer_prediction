@@ -9,7 +9,6 @@ dependencies:
   - matplotlib
   - pytorch
   - torchvision
-  - pytorch-cuda
   - scikit-learn
   - pyarrow
-prefix: C:\Users\zkarakaya\AppData\Local\miniforge3\envs\project
+prefix: C:\Users\karak\AppData\Local\miniforge3\envs\project

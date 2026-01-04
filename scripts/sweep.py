@@ -1,19 +1,8 @@
-import yaml
 import itertools
 import subprocess
 import copy
-import os
 from pathlib import Path
-
-
-def load_yaml(path):
-    with open(path, "r") as f:
-        return yaml.safe_load(f)
-
-
-def save_yaml(obj, path):
-    with open(path, "w") as f:
-        yaml.safe_dump(obj, f)
+from src.utils import load_yaml, save_yaml
 
 
 def main():
@@ -47,7 +36,8 @@ def main():
         subprocess.run(
             [
                 "python",
-                "scripts/train.py",
+                "-m",
+                "scripts.train",
                 "--config",
                 str(run_cfg_path),
             ],
