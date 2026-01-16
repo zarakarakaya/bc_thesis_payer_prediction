@@ -21,4 +21,9 @@ sweep_runs/
 # OS
 .DS_Store
 
+#vs code settings
 .vscode/
+
+#wandb outputs and some results
+results/
+wandb/

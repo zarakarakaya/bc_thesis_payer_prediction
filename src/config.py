@@ -15,3 +15,8 @@ def dict_to_namespace(d):
             **{k: dict_to_namespace(v) for k, v in d.items()}
         )
     return d
+def namespace_to_dict(ns):
+    return {
+        k: namespace_to_dict(v) if hasattr(v, "__dict__") else v
+        for k, v in vars(ns).items()
+    }

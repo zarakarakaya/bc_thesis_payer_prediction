@@ -2,7 +2,7 @@ data:
   path: data/data_1.parquet
 
 training:
-  epochs: 50
+  epochs: 75
   batch_size: 64
   lr: 0.001
   pos_weight: 70.0

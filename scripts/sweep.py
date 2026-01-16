@@ -1,49 +1,20 @@
-import itertools
-import subprocess
-import copy
-from pathlib import Path
-from src.utils import load_yaml, save_yaml
+import wandb
+from src.config import load_config
+from scripts.train import run_training
 
 
-def main():
-    sweep_cfg = load_yaml("configs/sweep.yaml")
-    base_cfg = load_yaml(sweep_cfg["base_config"])
+def sweep_train():
+    with wandb.init():
+        cfg = load_config("configs/base.yaml")
 
-    sweep_params = sweep_cfg["sweep"]
-    keys = sweep_params.keys()
-    values = sweep_params.values()
+        for k, v in wandb.config.items():
+            if hasattr(cfg.training, k):
+                setattr(cfg.training, k, v)
+            elif hasattr(cfg.model, k):
+                setattr(cfg.model, k, v)
 
-    runs = list(itertools.product(*values))
-
-    out_dir = Path("sweep_runs")
-    out_dir.mkdir(exist_ok=True)
-
-    for i, combo in enumerate(runs):
-        cfg = copy.deepcopy(base_cfg)
-
-        for k, v in zip(keys, combo):
-            if k in cfg["training"]:
-                cfg["training"][k] = v
-            elif k in cfg["model"]:
-                cfg["model"][k] = v
-            else:
-                raise ValueError(f"Unknown sweep key: {k}")
-
-        run_cfg_path = out_dir / f"run_{i}.yaml"
-        save_yaml(cfg, run_cfg_path)
-
-        print(f"\n=== Running sweep {i} ===")
-        subprocess.run(
-            [
-                "python",
-                "-m",
-                "scripts.train",
-                "--config",
-                str(run_cfg_path),
-            ],
-            check=True,
-        )
+        run_training(cfg, use_wandb=True)
 
 
 if __name__ == "__main__":
-    main()
+    sweep_train()

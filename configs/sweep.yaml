@@ -1,6 +1,24 @@
-base_config: configs/base.yaml
+method: bayes
+program: scripts/sweep.py
 
-sweep:
-  lr: [0.001, 0.0005]
-  batch_size: [64, 128]
-  dropout: [0.0, 0.1]
+metric:
+  name: val_f1
+  goal: maximize
+
+parameters:
+  lr:
+    values: [0.001, 0.0005]
+  batch_size:
+    values: [64, 128]
+  pos_weight:
+    values: [15, 30, 50]
+  
+  hidden_layers:
+    values:
+      - [64, 128, 64]
+      - [128, 256, 128]
+
+  activations:
+    values:
+      - ["relu", "relu", "relu"]
+      - ["tanh", "tanh", "tanh"]

@@ -21,7 +21,7 @@ class PlayerDataset(Dataset):
 
 def load_data(path):
     df = pd.read_parquet(path)
-    df = df.set_index('player_id')
+    #df = df.set_index('player_id')
 
     df['actions_per_session'] = df['total_actions'] / df['session_count']
     df = df[df['payer_d0'] == 0].drop(columns='payer_d0')
