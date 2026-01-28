@@ -1,14 +1,16 @@
 name: project
 channels:
   - conda-forge
+  - pytorch
+  - nvidia
 dependencies:
   - python=3.10
   - pandas
-  - jupyter
   - numpy
   - matplotlib
   - pytorch
   - torchvision
   - scikit-learn
   - pyarrow
-prefix: C:\Users\karak\AppData\Local\miniforge3\envs\project
+  - pytorch-cuda=11.8
+

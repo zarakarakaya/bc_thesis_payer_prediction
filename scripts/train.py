@@ -16,6 +16,10 @@ import numpy as np
 def run_training(cfg, use_wandb=False, log= False):
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    if device == "cpu":
+        num_workers = 0
+    else:
+        num_workers = 4
     print(f"Using device: {device}")
     if use_wandb:
         wandb.config.update(
@@ -43,7 +47,7 @@ def run_training(cfg, use_wandb=False, log= False):
         train_ds,
         batch_size=batch_size,
         shuffle=True,
-        num_workers=0,
+        num_workers=num_workers,
         pin_memory=pin_memory
     )
 
@@ -51,7 +55,7 @@ def run_training(cfg, use_wandb=False, log= False):
         val_ds,
         batch_size=batch_size,
         shuffle=False,
-        num_workers=0,
+        num_workers=num_workers,
         pin_memory=pin_memory
     )
 
