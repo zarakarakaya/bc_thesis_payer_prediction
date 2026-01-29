@@ -7,10 +7,10 @@ dependencies:
   - python=3.10
   - pandas
   - numpy
-  - matplotlib
   - pytorch
-  - torchvision
   - scikit-learn
   - pyarrow
   - pytorch-cuda=11.8
+  - pyyaml
+  - wandb
 
