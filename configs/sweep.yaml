@@ -1,6 +1,6 @@
 method: bayes
 program: scripts/sweep.py
-
+run_cap: 50
 metric:
   name: val_f1
   goal: maximize
