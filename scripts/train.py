@@ -26,6 +26,8 @@ def run_training(cfg, use_wandb=False, log= False):
             {
                 "hidden_layers": cfg.model.hidden_layers,
                 "activations": cfg.model.activations,
+                "hidden_layers_str": "-".join(map(str, cfg.model.hidden_layers)),
+                "activations_str": "-".join(map(str, cfg.model.activations)),
             },
             allow_val_change=True,
         )
