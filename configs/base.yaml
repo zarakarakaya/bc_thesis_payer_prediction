@@ -1,5 +1,5 @@
 data:
-  path: data/data_1.parquet
+  path: data/data.parquet
 
 training:
   epochs: 75
