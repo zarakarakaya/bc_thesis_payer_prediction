@@ -1,6 +1,6 @@
 import wandb
 from src.config import load_config
-from scripts.train import run_training
+from scripts.validate import validate
 
 
 def sweep_train():
@@ -13,7 +13,7 @@ def sweep_train():
             elif hasattr(cfg.model, k):
                 setattr(cfg.model, k, v)
 
-        run_training(cfg, use_wandb=True)
+        validate(cfg, use_wandb=True)
 
 
 if __name__ == "__main__":

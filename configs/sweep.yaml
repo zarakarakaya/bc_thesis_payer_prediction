@@ -11,7 +11,7 @@ parameters:
   batch_size:
     values: [64, 128]
   pos_weight:
-    values: [15, 30, 50]
+    values: [5, 10, 15, 20, 25, 30, 35]
   
   hidden_layers:
     values:
@@ -22,3 +22,4 @@ parameters:
     values:
       - ["relu", "relu", "relu"]
       - ["tanh", "tanh", "tanh"]
+      - ["tanh", "relu", "tanh"]
