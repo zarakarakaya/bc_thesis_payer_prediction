@@ -4,7 +4,7 @@ from src.kfold import make_folds
 from scripts.train import run_training
 import wandb
 import argparse
-
+from sklearn.preprocessing import StandardScaler
 from src.config import load_config
 def average_history(fold_history):
 
@@ -40,6 +40,9 @@ def validate(cfg, use_wandb = False):
 
         X_train, X_val = X[train_idx], X[val_idx]
         y_train, y_val = y[train_idx], y[val_idx]
+        scaler = StandardScaler()
+        X_train = scaler.fit_transform(X_train) 
+        X_val   = scaler.transform(X_val)
         k_fold =  (X_train, X_val, y_train, y_val)
         history = run_training(cfg, use_wandb=use_wandb, k_fold=k_fold)
         fold_history.append(history)
