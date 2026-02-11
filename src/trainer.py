@@ -39,7 +39,7 @@ class Trainer:
 
     def eval_epoch(self, val_loader):
         self.model.eval()
-        all_preds, all_labels = [], []
+        all_probs, all_labels = [], []
 
         with torch.no_grad():
             for x, y in val_loader:
@@ -48,40 +48,42 @@ class Trainer:
 
                 logits = self.model(x)
                 probs = torch.sigmoid(logits)
-                preds = (probs > 0.5).float()
 
-                all_preds.extend(preds.cpu().numpy())
-                all_labels.extend(y.cpu().numpy())
+                all_probs.append(probs.detach().cpu().numpy().reshape(-1))
+                all_labels.append(y.detach().cpu().numpy().reshape(-1))
 
-        acc = accuracy_score(all_labels, all_preds)
-        f1 = f1_score(all_labels, all_preds, zero_division=0)
+        all_probs = np.concatenate(all_probs)    
+        all_labels = np.concatenate(all_labels)  
 
-        return acc, f1
+        thresholds = np.linspace(0.01, 0.99, 99)
+        best_f1, best_t = -1.0, 0.5
+    
+        for t in thresholds:
+            preds = (all_probs >= t).astype(int)
+            f1 = f1_score(all_labels, preds, zero_division=0)
+            if f1 > best_f1:
+                best_f1, best_t = f1, t
+    
+        best_preds = (all_probs >= best_t).astype(int)
+        acc = accuracy_score(all_labels, best_preds)
+    
+        return acc, best_f1, best_t
 
     def fit(self, train_loader, val_loader, epochs, verbose=False):
-        history = {"loss": [], "val_acc": [], "val_f1": []}
+        history = {"loss": [], "val_acc": [], "val_f1": [], "best_t": []}
 
         for epoch in range(epochs):
             loss = self.train_epoch(train_loader)
-            acc, f1 = self.eval_epoch(val_loader)
+            acc, f1, best_t = self.eval_epoch(val_loader)
 
             if self.scheduler:
                 self.scheduler.step()
 
-            if self.use_wandb:
-                wandb.log(
-                    {
-                        "epoch": epoch,
-                        "train_loss": loss,
-                        "val_accuracy": acc,
-                        "val_f1": f1,
-                    }
-                )
-                
+
             history["loss"].append(loss)
             history["val_acc"].append(acc)
             history["val_f1"].append(f1)
-
+            history["best_t"].append(best_t)
             if verbose:
                 print(f"Epoch {epoch+1} | loss={loss:.4f} | val_acc={acc:.4f} | val_f1={f1:.4f}")
 
