@@ -7,6 +7,7 @@ from src.model import MLP
 from src.trainer import Trainer
 from src.config import load_config, namespace_to_dict
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 import wandb
 
 from pathlib import Path
@@ -33,6 +34,10 @@ def run_training(cfg, use_wandb=False, log= False, k_fold = None):
          X_train, X_test, y_train, y_test = k_fold
     else:
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+        scaler = StandardScaler()
+        X_train = scaler.fit_transform(X_train) 
+        X_test  = scaler.transform(X_test)
+
 
     train_ds = PlayerDataset(X_train, y_train)
     val_ds = PlayerDataset(X_test, y_test)
