@@ -8,7 +8,7 @@ from sklearn.preprocessing import StandardScaler
 from src.config import load_config
 def average_history(fold_history):
 
-    keys = ["loss", "val_acc", "val_f1"]
+    keys = ["loss", "val_acc", "val_f1", "best_t"]
     avg = {}
 
     for k in keys:
@@ -51,8 +51,8 @@ def validate(cfg, use_wandb = False):
 
 
     if use_wandb:
-        for epoch, (loss, acc, f1) in enumerate(
-            zip(avg["loss"], avg["val_acc"], avg["val_f1"])
+        for epoch, (loss, acc, f1, t) in enumerate(
+            zip(avg["loss"], avg["val_acc"], avg["val_f1"], avg["best_t"])
         ):
             wandb.log(
                 {
@@ -60,6 +60,7 @@ def validate(cfg, use_wandb = False):
                     "train_loss": loss,
                     "val_accuracy": acc,
                     "val_f1": f1,
+                    "best_t": t,
                 }
             )
 
