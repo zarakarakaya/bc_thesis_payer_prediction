@@ -1,7 +1,7 @@
 import torch
 from sklearn.metrics import accuracy_score, f1_score, confusion_matrix
 import wandb
-
+import numpy as np
 class Trainer:
     def __init__(
         self,
