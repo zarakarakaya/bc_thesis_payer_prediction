@@ -8,7 +8,7 @@ from sklearn.preprocessing import StandardScaler
 from src.config import load_config
 def average_history(fold_history):
 
-    keys = ["loss", "val_acc", "val_f1", "best_t"]
+    keys = ["loss", "val_acc", "val_f1", "best_t", "val_precision", "val_recall"]
     avg = {}
 
     for k in keys:
@@ -16,8 +16,11 @@ def average_history(fold_history):
         avg[k] = arr.mean(axis=0).tolist()
 
     return avg
-def validate(cfg, use_wandb = False):
-    X, y = load_data(cfg.data.path)
+def validate(cfg,  X=None, y=None, use_wandb = False):
+
+    if X is None or y is None:
+        X, y = load_data(cfg.data.path)
+
 
     n_folds = cfg.training.n_folds
     fold_history = []
@@ -43,16 +46,16 @@ def validate(cfg, use_wandb = False):
         scaler = StandardScaler()
         X_train = scaler.fit_transform(X_train) 
         X_val   = scaler.transform(X_val)
-        k_fold =  (X_train, X_val, y_train, y_val)
-        history = run_training(cfg, use_wandb=use_wandb, k_fold=k_fold)
+        data =  (X_train, X_val, y_train, y_val)
+        history, _ = run_training(cfg, use_wandb=use_wandb, data=data)
         fold_history.append(history)
 
     avg = average_history(fold_history)
 
 
     if use_wandb:
-        for epoch, (loss, acc, f1, t) in enumerate(
-            zip(avg["loss"], avg["val_acc"], avg["val_f1"], avg["best_t"])
+        for epoch, (loss, acc, f1, t, precision, recall) in enumerate(
+            zip(avg["loss"], avg["val_acc"], avg["val_f1"], avg["best_t"], avg["val_precision"], avg["val_recall"])
         ):
             wandb.log(
                 {
@@ -61,6 +64,9 @@ def validate(cfg, use_wandb = False):
                     "val_accuracy": acc,
                     "val_f1": f1,
                     "best_t": t,
+                    "val_precision": precision, 
+                    "val_recall": recall
+
                 }
             )
 

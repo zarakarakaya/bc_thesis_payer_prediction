@@ -6,11 +6,11 @@ from scripts.sweep import sweep_train
 
 
 def main():
-    sweep_config = load_yaml("configs/sweep.yaml")
+    sweep_config = load_yaml("configs/sweep_pos_weight.yaml")
 
     sweep_id = wandb.sweep(
         sweep=sweep_config,
-        project="bc_thesis_payer_prediction_vol6",
+        project="bc_thesis_payer_prediction_vol7",
         entity="karakayazara-comenius-university-in-bratislava",
     )
 

@@ -1,6 +1,6 @@
 import argparse
 import torch
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, WeightedRandomSampler
 
 from src.data import load_data, PlayerDataset
 from src.model import MLP
@@ -13,8 +13,8 @@ import wandb
 from pathlib import Path
 import json
 import numpy as np
-
-def run_training(cfg, use_wandb=False, log= False, k_fold = None):
+import matplotlib.pyplot as plt
+def run_training(cfg, use_wandb=False, log= False, data = None):
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     if torch.cuda.is_available():
@@ -30,8 +30,8 @@ def run_training(cfg, use_wandb=False, log= False, k_fold = None):
     lr = cfg.training.lr
     pos_weight = cfg.training.pos_weight
 
-    if k_fold:
-         X_train, X_test, y_train, y_test = k_fold
+    if data:
+         X_train, X_test, y_train, y_test = data
     else:
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
         scaler = StandardScaler()
@@ -44,18 +44,29 @@ def run_training(cfg, use_wandb=False, log= False, k_fold = None):
 
     pin_memory = (device.type == "cuda")
     
+    y_train = y_train.astype(int)
+    class_counts = np.bincount(y_train)
+    class_weights = 1.0 / class_counts
+    sample_weights = class_weights[y_train]
+    sample_weights = torch.DoubleTensor(sample_weights)
+
+    sampler = WeightedRandomSampler(
+        weights=sample_weights,
+        num_samples=len(sample_weights),
+        replacement=True
+    )
+
     train_loader = DataLoader(
         train_ds,
         batch_size=batch_size,
-        shuffle=True,
         num_workers=num_workers,
-        pin_memory=pin_memory
+        pin_memory=pin_memory,
+        sampler=sampler
     )
 
     val_loader = DataLoader(
         val_ds,
         batch_size=batch_size,
-        shuffle=False,
         num_workers=num_workers,
         pin_memory=pin_memory
     )
@@ -93,12 +104,19 @@ def run_training(cfg, use_wandb=False, log= False, k_fold = None):
         verbose=True,
     )
     if log:
-        cm = trainer.confusion_matrix(val_loader)
+        threshold = history["best_t"][-1]
+        import time
 
-        out_dir = Path("results") / wandb.run.id if use_wandb else Path("results") / "no_wandb"
-        out_dir.mkdir(parents=True, exist_ok=True)
-
+        if use_wandb:
+            out_dir = Path("results") / wandb.run.id
+        else:
+            run_name = f"run_{int(time.time())}"
+            out_dir = Path("results") / run_name
+        cm = trainer.confusion_matrix(val_loader, threshold = threshold)
+        
         cm_path = out_dir / "confusion_matrix.txt"
+
+        out_dir.mkdir(parents=True, exist_ok=True)
         with open(cm_path, "w") as f:
             f.write("Confusion Matrix (rows=true, cols=pred)\n\n")
             f.write(np.array2string(cm))
@@ -107,7 +125,44 @@ def run_training(cfg, use_wandb=False, log= False, k_fold = None):
         with open(cfg_path, "w") as f:
             json.dump(namespace_to_dict(cfg), f, indent=2)
 
-    return history
+        fpr, tpr, thresholds, roc_auc = trainer.roc_values(val_loader)
+        roc_path = out_dir / "roc_curve.png"
+
+        plt.figure()
+        plt.plot(fpr, tpr)
+        plt.fill_between(fpr, tpr, alpha=0.3)
+        plt.xlabel("False Positive Rate")
+        plt.ylabel("True Positive Rate")
+        plt.title(f"ROC Curve (AUC = {roc_auc:.4f})")
+        plt.savefig(roc_path)
+        plt.close()
+    if use_wandb:
+        wandb.config.update(
+            {
+                "hidden_layers": cfg.model.hidden_layers,
+                "activations": cfg.model.activations,
+                "hidden_layers_str": "-".join(map(str, cfg.model.hidden_layers)),
+                "activations_str": "-".join(map(str, cfg.model.activations)),
+            },
+            allow_val_change=True,
+        )
+   
+    if use_wandb:
+        for epoch, (loss, acc, f1, t, precision, recall) in enumerate(
+            zip(history["loss"], history["val_acc"], history["val_f1"], history["best_t"], history["val_precision"], history["val_recall"])
+        ):
+            wandb.log(
+                {
+                    "epoch": epoch,
+                    "train_loss": loss,
+                    "val_accuracy": acc,
+                    "val_f1": f1,
+                    "best_t": t,
+                    "val_precision": precision, 
+                    "val_recall": recall
+                }
+            )
+    return history, trainer
 
 
 

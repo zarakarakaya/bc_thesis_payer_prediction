@@ -1,0 +1,3691 @@
+Folder PATH listing
+Volume serial number is 5EA1-9499
+C:.
+|   .environment.yml.swp
+|   .gitignore
+|   environment.yml
+|   struct.txt
+|   
++---.vscode
+|       settings.json
+|       
++---configs
+|       base.yaml
+|       best.yaml
+|       sweep.yaml
+|       sweep_pos_weight.yaml
+|       
++---data
+|       data.parquet
+|       data_1.parquet
+|       data_1_with_pids.parquet
+|       
++---results
+|   +---2mlzpiuf
+|   |       config.json
+|   |       confusion_matrix.txt
+|   |       roc_curve.png
+|   |       
+|   +---51fdknx5
+|   |       config.json
+|   |       confusion_matrix.txt
+|   |       roc_curve.png
+|   |       
+|   +---6tv565kl
+|   |       config.json
+|   |       confusion_matrix.txt
+|   |       roc_curve.png
+|   |       
+|   +---km5v0tkn
+|   |       config.json
+|   |       confusion_matrix.txt
+|   |       roc_curve.png
+|   |       
+|   \---oyi57ikq
+|           config.json
+|           confusion_matrix.txt
+|           roc_curve.png
+|           
++---scripts
+|   |   main.py
+|   |   run_sweep.py
+|   |   sweep.py
+|   |   train.py
+|   |   validate.py
+|   |   
+|   \---__pycache__
+|           main.cpython-310.pyc
+|           run_sweep.cpython-310.pyc
+|           run_sweep.cpython-312.pyc
+|           sweep.cpython-310.pyc
+|           train.cpython-310.pyc
+|           validate.cpython-310.pyc
+|           
++---src
+|   |   config.py
+|   |   data.py
+|   |   helper.py
+|   |   kfold.py
+|   |   model.py
+|   |   trainer.py
+|   |   utils.py
+|   |   
+|   \---__pycache__
+|           config.cpython-310.pyc
+|           data.cpython-310.pyc
+|           kfold.cpython-310.pyc
+|           model.cpython-310.pyc
+|           trainer.cpython-310.pyc
+|           utils.cpython-310.pyc
+|           utils.cpython-312.pyc
+|           
+\---wandb
+    +---run-20260108_151454-b4316i4t
+    |   |   run-b4316i4t.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260108_151612-tu7edu8m
+    |   |   run-tu7edu8m.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260108_163337-zia0abcv
+    |   |   run-zia0abcv.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260108_163346-yhkksvmf
+    |   |   run-yhkksvmf.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260108_163356-bzixtbuk
+    |   |   run-bzixtbuk.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260108_163402-ri7hqn32
+    |   |   run-ri7hqn32.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260108_163410-x328r96q
+    |   |   run-x328r96q.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260108_163426-qwiviha8
+    |   |   run-qwiviha8.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260108_163431-xs28t1tl
+    |   |   run-xs28t1tl.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260108_163440-3fmpo6r3
+    |   |   run-3fmpo6r3.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260108_163455-zel6mgep
+    |   |   run-zel6mgep.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260108_163505-1eicswdm
+    |   |   run-1eicswdm.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260108_163511-qohzq7ar
+    |   |   run-qohzq7ar.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_111958-wt61aq65
+    |   |   run-wt61aq65.wandb
+    |   |   
+    |   +---files
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_112010-32722w24
+    |   +---files
+    |   +---logs
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_112044-146zbyxx
+    |   |   run-146zbyxx.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_112222-zgyppa87
+    |   |   run-zgyppa87.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_112406-a2xllh41
+    |   |   run-a2xllh41.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_112606-ufyuznai
+    |   |   run-ufyuznai.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_112800-1fufs1cm
+    |   |   run-1fufs1cm.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_112913-chwa2wc6
+    |   |   run-chwa2wc6.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_113031-mjc74rmh
+    |   |   run-mjc74rmh.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_113154-n5jx7c2h
+    |   |   run-n5jx7c2h.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_115751-d3x3u5m2
+    |   |   run-d3x3u5m2.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_115802-pvegyzl1
+    |   |   run-pvegyzl1.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_115919-c4xn1hai
+    |   |   run-c4xn1hai.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_120048-6xj8uoga
+    |   |   run-6xj8uoga.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_120237-wtq149ws
+    |   |   run-wtq149ws.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_120350-688ipqi2
+    |   |   run-688ipqi2.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_120519-ymb6836e
+    |   |   run-ymb6836e.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_120739-76twkfxh
+    |   |   run-76twkfxh.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_121000-qcusnids
+    |   |   run-qcusnids.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_121210-f436qdv7
+    |   |   run-f436qdv7.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_121425-hdmw3ex2
+    |   |   run-hdmw3ex2.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_121635-bojendva
+    |   |   run-bojendva.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_121819-0ll8x4vr
+    |   |   run-0ll8x4vr.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_122056-73u2m46f
+    |   |   run-73u2m46f.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_122224-d47k0yq1
+    |   |   run-d47k0yq1.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_122353-z6ovty01
+    |   |   run-z6ovty01.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_122608-7d2c57h4
+    |   |   run-7d2c57h4.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_122753-kefy7ude
+    |   |   run-kefy7ude.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_123024-2u9iv4sp
+    |   |   run-2u9iv4sp.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_123239-ekcpkroa
+    |   |   run-ekcpkroa.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_123455-g4cq0wsl
+    |   |   run-g4cq0wsl.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_123639-ef8mtjj6
+    |   |   run-ef8mtjj6.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_123807-4306maop
+    |   |   run-4306maop.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_123925-bwmz5ccd
+    |   |   run-bwmz5ccd.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_124054-ncnzhazc
+    |   |   run-ncnzhazc.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_124314-ead9ac8o
+    |   |   run-ead9ac8o.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_124438-6h9tif4d
+    |   |   run-6h9tif4d.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_124607-ref3cymb
+    |   |   run-ref3cymb.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_124735-tjf3pcbi
+    |   |   run-tjf3pcbi.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_124934-go99egwm
+    |   |   run-go99egwm.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_125129-075dvwrq
+    |   |   run-075dvwrq.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_125303-x1dqo553
+    |   |   run-x1dqo553.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_125519-oyiom6i0
+    |   |   run-oyiom6i0.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_125703-tj1yu5jf
+    |   |   run-tj1yu5jf.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_125918-mce1qdlo
+    |   |   run-mce1qdlo.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_130052-ifm863im
+    |   |   run-ifm863im.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_130312-05pj9wbf
+    |   |   run-05pj9wbf.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_130456-q5fn1nku
+    |   |   run-q5fn1nku.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_130635-n5zbbloa
+    |   |   run-n5zbbloa.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_130819-4w2iuov4
+    |   |   run-4w2iuov4.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_130958-mgk3gagq
+    |   |   run-mgk3gagq.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_131214-53jqxqk0
+    |   |   run-53jqxqk0.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_131429-1eijo97h
+    |   |   run-1eijo97h.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_131644-10biqolw
+    |   |   run-10biqolw.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_131828-lojg9g0v
+    |   |   run-lojg9g0v.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_132044-qye7skui
+    |   |   run-qye7skui.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_132259-co5x3ecz
+    |   |   run-co5x3ecz.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_132444-d1urx8ph
+    |   |   run-d1urx8ph.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_132704-bu7r19ms
+    |   |   run-bu7r19ms.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_132920-zyhx31lv
+    |   |   run-zyhx31lv.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_133054-4k18a4rb
+    |   |   run-4k18a4rb.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_133319-dt4tj7ez
+    |   |   run-dt4tj7ez.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_133540-wxeo1tui
+    |   |   run-wxeo1tui.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_133719-hen3bawm
+    |   |   run-hen3bawm.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_133848-n4041bfm
+    |   |   run-n4041bfm.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_134032-9pzcuyzt
+    |   |   run-9pzcuyzt.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_134313-x3psbjmp
+    |   |   run-x3psbjmp.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_134458-halqqwij
+    |   |   run-halqqwij.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_134642-rfd5kvm5
+    |   |   run-rfd5kvm5.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_134858-5og0pcpk
+    |   |   run-5og0pcpk.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_135042-fmxa5xgn
+    |   |   run-fmxa5xgn.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_135302-u0y1zk0i
+    |   |   run-u0y1zk0i.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_135539-d3pgjtlm
+    |   |   run-d3pgjtlm.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_135723-fbvht7v0
+    |   |   run-fbvht7v0.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_135852-nfu846ue
+    |   |   run-nfu846ue.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_140021-6d7z1l94
+    |   |   run-6d7z1l94.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_140257-wqclh48s
+    |   |   run-wqclh48s.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_140528-jog83kjd
+    |   |   run-jog83kjd.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_140657-omba46f3
+    |   |   run-omba46f3.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_140933-2ans59d0
+    |   |   run-2ans59d0.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_141107-leg4trq3
+    |   |   run-leg4trq3.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_141343-jj6hbczt
+    |   |   run-jj6hbczt.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_141521-mbox6zuw
+    |   |   run-mbox6zuw.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_141738-ssnd7j34
+    |   |   run-ssnd7j34.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_141906-1j2io2c1
+    |   |   run-1j2io2c1.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_142040-cquvjat0
+    |   |   run-cquvjat0.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_142251-2kkexig1
+    |   |   run-2kkexig1.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_142425-j52zbugu
+    |   |   run-j52zbugu.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_142553-3xgglevi
+    |   |   run-3xgglevi.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_142727-0j51vxgh
+    |   |   run-0j51vxgh.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_142906-5prs2iq5
+    |   |   run-5prs2iq5.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_143046-u80gq1dr
+    |   |   run-u80gq1dr.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_143215-8v1zccz9
+    |   |   run-8v1zccz9.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_143451-f3s49hww
+    |   |   run-f3s49hww.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_143635-9jlfl5vq
+    |   |   run-9jlfl5vq.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_143901-40hduyop
+    |   |   run-40hduyop.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_144040-uhx9oaex
+    |   |   run-uhx9oaex.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_144316-pc66oj4t
+    |   |   run-pc66oj4t.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_144552-v8xv1v4o
+    |   |   run-v8xv1v4o.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_144828-pzg4heg6
+    |   |   run-pzg4heg6.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_145002-hbi9kolq
+    |   |   run-hbi9kolq.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_145157-hrjwd74n
+    |   |   run-hrjwd74n.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_145326-e4v6x939
+    |   |   run-e4v6x939.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_145444-tveg9pwi
+    |   |   run-tveg9pwi.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_145644-4je2ddqj
+    |   |   run-4je2ddqj.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_145813-jhimhmr3
+    |   |   run-jhimhmr3.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_150013-xhg29uy1
+    |   |   run-xhg29uy1.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_150244-bx5igfim
+    |   |   run-bx5igfim.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_150511-7aj97ek4
+    |   |   run-7aj97ek4.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_150727-o93sgdjm
+    |   |   run-o93sgdjm.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_150958-bkprrs47
+    |   |   run-bkprrs47.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_151126-ilkh6tw8
+    |   |   run-ilkh6tw8.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_151255-htiyz02p
+    |   |   run-htiyz02p.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_151434-ieket2wj
+    |   |   run-ieket2wj.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_151644-k1h0m8wq
+    |   |   run-k1h0m8wq.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_151854-wuloyqxl
+    |   |   run-wuloyqxl.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_152023-hh9kehzp
+    |   |   run-hh9kehzp.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_152234-uk65ncxv
+    |   |   run-uk65ncxv.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_152422-xzp4kt5v
+    |   |   run-xzp4kt5v.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_152628-d91tigs6
+    |   |   run-d91tigs6.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_152757-2lnesv96
+    |   |   run-2lnesv96.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_152941-ps5pijb7
+    |   |   run-ps5pijb7.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_153114-mwbrqfuz
+    |   |   run-mwbrqfuz.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_153325-zrg7khij
+    |   |   run-zrg7khij.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_153454-0a1vk68l
+    |   |   run-0a1vk68l.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_153622-eaqblpjv
+    |   |   run-eaqblpjv.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_153757-w4nkz8lw
+    |   |   run-w4nkz8lw.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_153932-fj4fb5vm
+    |   |   run-fj4fb5vm.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_154056-yl0no5sp
+    |   |   run-yl0no5sp.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_154306-rl0mmcve
+    |   |   run-rl0mmcve.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_154537-7uadj2g1
+    |   |   run-7uadj2g1.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_154726-2nzisd0l
+    |   |   run-2nzisd0l.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_154900-fziikdoz
+    |   |   run-fziikdoz.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_155132-s3rza2u7
+    |   |   run-s3rza2u7.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_155255-ff9av576
+    |   |   run-ff9av576.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_155531-riizmvii
+    |   |   run-riizmvii.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_155812-wz68ew44
+    |   |   run-wz68ew44.wandb
+    |   |   
+    |   +---files
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_160829-8g9h148i
+    |   |   run-8g9h148i.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_161028-08tdozez
+    |   |   run-08tdozez.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_161239-xkxk2nkd
+    |   |   run-xkxk2nkd.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_161602-3f5bixni
+    |   |   run-3f5bixni.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_161925-nwip8ix0
+    |   |   run-nwip8ix0.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_162201-1h9tqplz
+    |   |   run-1h9tqplz.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_162417-fas3vj4y
+    |   |   run-fas3vj4y.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_162653-8bt561xo
+    |   |   run-8bt561xo.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_162928-yilwhmky
+    |   |   run-yilwhmky.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_163205-0v8qjv19
+    |   |   run-0v8qjv19.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_163420-zid80frn
+    |   |   run-zid80frn.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_163651-kiq8o2qb
+    |   |   run-kiq8o2qb.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_163906-110py1es
+    |   |   run-110py1es.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_164126-jbiu6e3a
+    |   |   run-jbiu6e3a.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_164358-t2rc1ovl
+    |   |   run-t2rc1ovl.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_164623-x0steuc0
+    |   |   run-x0steuc0.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_164839-446a8zj6
+    |   |   run-446a8zj6.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_165105-int7fzge
+    |   |   run-int7fzge.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_165352-fpnaoyf6
+    |   |   run-fpnaoyf6.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_165720-78234d1w
+    |   |   run-78234d1w.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_170048-5dtvefvv
+    |   |   run-5dtvefvv.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_170350-wevrjh2y
+    |   |   run-wevrjh2y.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_170642-4lhj21xq
+    |   |   run-4lhj21xq.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_171005-tnovbolb
+    |   |   run-tnovbolb.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_171257-e0tk6b9u
+    |   |   run-e0tk6b9u.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_171559-y0c0ftfo
+    |   |   run-y0c0ftfo.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_171851-4jqipx63
+    |   |   run-4jqipx63.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_172137-5f0l8f9k
+    |   |   run-5f0l8f9k.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_172435-j0ywnsud
+    |   |   run-j0ywnsud.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_172716-hg8wcttw
+    |   |   run-hg8wcttw.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_173008-wea6okyl
+    |   |   run-wea6okyl.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_173249-huy64jkp
+    |   |   run-huy64jkp.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_173520-nq8zrbrt
+    |   |   run-nq8zrbrt.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_173828-ip3npt2d
+    |   |   run-ip3npt2d.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_174156-b9rqwj0h
+    |   |   run-b9rqwj0h.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_174453-cbbajo84
+    |   |   run-cbbajo84.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_174749-o7txafji
+    |   |   run-o7txafji.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_175058-5kf3wdv9
+    |   |   run-5kf3wdv9.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_175441-0ai9k990
+    |   |   run-0ai9k990.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_175743-08b9am74
+    |   |   run-08b9am74.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_180036-1zjpcjsw
+    |   |   run-1zjpcjsw.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260109_180404-eb6xcsbn
+    |   |   run-eb6xcsbn.wandb
+    |   |   
+    |   +---files
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260304_115858-wh3xfe45
+    |   |   run-wh3xfe45.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260304_124825-tzix3a80
+    |   |   run-tzix3a80.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260304_133830-d816jjs7
+    |   |   run-d816jjs7.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260304_142830-k6mziefe
+    |   |   run-k6mziefe.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260304_151824-kwbscldz
+    |   |   run-kwbscldz.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260304_161035-x84343ut
+    |   |   run-x84343ut.wandb
+    |   |   
+    |   +---files
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260304_162840-nzwh7ik0
+    |   |   run-nzwh7ik0.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260304_171837-38rcrx9t
+    |   |   run-38rcrx9t.wandb
+    |   |   
+    |   +---files
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260304_172656-95efv5o0
+    |   |   run-95efv5o0.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260304_181640-2gj34iqd
+    |   |   run-2gj34iqd.wandb
+    |   |   
+    |   +---files
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260306_104755-bdomgpaa
+    |   |   run-bdomgpaa.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260306_113923-b3bzzday
+    |   |   run-b3bzzday.wandb
+    |   |   
+    |   +---files
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260306_114058-2mlzpiuf
+    |   |   run-2mlzpiuf.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260306_123119-6tv565kl
+    |   |   run-6tv565kl.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260306_132316-ar9lfih0
+    |   |   run-ar9lfih0.wandb
+    |   |   
+    |   +---files
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260306_133342-km5v0tkn
+    |   |   run-km5v0tkn.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260306_142614-51fdknx5
+    |   |   run-51fdknx5.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260306_152034-0lsbtle5
+    |   |   run-0lsbtle5.wandb
+    |   |   
+    |   +---files
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260306_152722-oyi57ikq
+    |   |   run-oyi57ikq.wandb
+    |   |   
+    |   +---files
+    |   |       config.yaml
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       wandb-summary.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---run-20260306_161847-dr7lpva2
+    |   |   run-dr7lpva2.wandb
+    |   |   
+    |   +---files
+    |   |       output.log
+    |   |       requirements.txt
+    |   |       wandb-metadata.json
+    |   |       
+    |   +---logs
+    |   |       debug-internal.log
+    |   |       debug.log
+    |   |       
+    |   \---tmp
+    |       \---code
+    +---sweep-23mqnguk
+    |       config-146zbyxx.yaml
+    |       config-1fufs1cm.yaml
+    |       config-a2xllh41.yaml
+    |       config-chwa2wc6.yaml
+    |       config-mjc74rmh.yaml
+    |       config-n5jx7c2h.yaml
+    |       config-ufyuznai.yaml
+    |       config-zgyppa87.yaml
+    |       
+    +---sweep-7fds44kx
+    |       config-d3x3u5m2.yaml
+    |       config-pvegyzl1.yaml
+    |       
+    +---sweep-b81lrmhf
+    |       config-0lsbtle5.yaml
+    |       config-51fdknx5.yaml
+    |       config-km5v0tkn.yaml
+    |       
+    +---sweep-bs2jsqw5
+    |       config-2mlzpiuf.yaml
+    |       config-6tv565kl.yaml
+    |       config-ar9lfih0.yaml
+    |       
+    +---sweep-ccjc8qe9
+    |       config-05pj9wbf.yaml
+    |       config-075dvwrq.yaml
+    |       config-0a1vk68l.yaml
+    |       config-0j51vxgh.yaml
+    |       config-0ll8x4vr.yaml
+    |       config-10biqolw.yaml
+    |       config-1eijo97h.yaml
+    |       config-1j2io2c1.yaml
+    |       config-2ans59d0.yaml
+    |       config-2kkexig1.yaml
+    |       config-2lnesv96.yaml
+    |       config-2nzisd0l.yaml
+    |       config-2u9iv4sp.yaml
+    |       config-3xgglevi.yaml
+    |       config-40hduyop.yaml
+    |       config-4306maop.yaml
+    |       config-4je2ddqj.yaml
+    |       config-4k18a4rb.yaml
+    |       config-4w2iuov4.yaml
+    |       config-53jqxqk0.yaml
+    |       config-5og0pcpk.yaml
+    |       config-5prs2iq5.yaml
+    |       config-688ipqi2.yaml
+    |       config-6d7z1l94.yaml
+    |       config-6h9tif4d.yaml
+    |       config-6xj8uoga.yaml
+    |       config-73u2m46f.yaml
+    |       config-76twkfxh.yaml
+    |       config-7aj97ek4.yaml
+    |       config-7d2c57h4.yaml
+    |       config-7uadj2g1.yaml
+    |       config-8v1zccz9.yaml
+    |       config-9jlfl5vq.yaml
+    |       config-9pzcuyzt.yaml
+    |       config-bkprrs47.yaml
+    |       config-bojendva.yaml
+    |       config-bu7r19ms.yaml
+    |       config-bwmz5ccd.yaml
+    |       config-bx5igfim.yaml
+    |       config-c4xn1hai.yaml
+    |       config-co5x3ecz.yaml
+    |       config-cquvjat0.yaml
+    |       config-d1urx8ph.yaml
+    |       config-d3pgjtlm.yaml
+    |       config-d47k0yq1.yaml
+    |       config-d91tigs6.yaml
+    |       config-dt4tj7ez.yaml
+    |       config-e4v6x939.yaml
+    |       config-ead9ac8o.yaml
+    |       config-eaqblpjv.yaml
+    |       config-ef8mtjj6.yaml
+    |       config-ekcpkroa.yaml
+    |       config-f3s49hww.yaml
+    |       config-f436qdv7.yaml
+    |       config-fbvht7v0.yaml
+    |       config-ff9av576.yaml
+    |       config-fj4fb5vm.yaml
+    |       config-fmxa5xgn.yaml
+    |       config-fziikdoz.yaml
+    |       config-g4cq0wsl.yaml
+    |       config-go99egwm.yaml
+    |       config-halqqwij.yaml
+    |       config-hbi9kolq.yaml
+    |       config-hdmw3ex2.yaml
+    |       config-hen3bawm.yaml
+    |       config-hh9kehzp.yaml
+    |       config-hrjwd74n.yaml
+    |       config-htiyz02p.yaml
+    |       config-ieket2wj.yaml
+    |       config-ifm863im.yaml
+    |       config-ilkh6tw8.yaml
+    |       config-j52zbugu.yaml
+    |       config-jhimhmr3.yaml
+    |       config-jj6hbczt.yaml
+    |       config-jog83kjd.yaml
+    |       config-k1h0m8wq.yaml
+    |       config-kefy7ude.yaml
+    |       config-leg4trq3.yaml
+    |       config-lojg9g0v.yaml
+    |       config-mbox6zuw.yaml
+    |       config-mce1qdlo.yaml
+    |       config-mgk3gagq.yaml
+    |       config-mwbrqfuz.yaml
+    |       config-n4041bfm.yaml
+    |       config-n5zbbloa.yaml
+    |       config-ncnzhazc.yaml
+    |       config-nfu846ue.yaml
+    |       config-o93sgdjm.yaml
+    |       config-omba46f3.yaml
+    |       config-oyiom6i0.yaml
+    |       config-pc66oj4t.yaml
+    |       config-ps5pijb7.yaml
+    |       config-pzg4heg6.yaml
+    |       config-q5fn1nku.yaml
+    |       config-qcusnids.yaml
+    |       config-qye7skui.yaml
+    |       config-ref3cymb.yaml
+    |       config-rfd5kvm5.yaml
+    |       config-riizmvii.yaml
+    |       config-rl0mmcve.yaml
+    |       config-s3rza2u7.yaml
+    |       config-ssnd7j34.yaml
+    |       config-tj1yu5jf.yaml
+    |       config-tjf3pcbi.yaml
+    |       config-tveg9pwi.yaml
+    |       config-u0y1zk0i.yaml
+    |       config-u80gq1dr.yaml
+    |       config-uhx9oaex.yaml
+    |       config-uk65ncxv.yaml
+    |       config-v8xv1v4o.yaml
+    |       config-w4nkz8lw.yaml
+    |       config-wqclh48s.yaml
+    |       config-wtq149ws.yaml
+    |       config-wuloyqxl.yaml
+    |       config-wxeo1tui.yaml
+    |       config-wz68ew44.yaml
+    |       config-x1dqo553.yaml
+    |       config-x3psbjmp.yaml
+    |       config-xhg29uy1.yaml
+    |       config-xzp4kt5v.yaml
+    |       config-yl0no5sp.yaml
+    |       config-ymb6836e.yaml
+    |       config-z6ovty01.yaml
+    |       config-zrg7khij.yaml
+    |       config-zyhx31lv.yaml
+    |       
+    +---sweep-ckrzbo3n
+    |       config-wt61aq65.yaml
+    |       
+    +---sweep-fcmusvw2
+    |       config-38rcrx9t.yaml
+    |       config-nzwh7ik0.yaml
+    |       
+    +---sweep-is4y3cts
+    |       config-3fmpo6r3.yaml
+    |       
+    +---sweep-j3b5x0kb
+    |       config-32722w24.yaml
+    |       
+    +---sweep-j3lltz1d
+    |       config-bzixtbuk.yaml
+    |       config-ri7hqn32.yaml
+    |       config-yhkksvmf.yaml
+    |       
+    +---sweep-lm5dvtqx
+    |       config-dr7lpva2.yaml
+    |       config-oyi57ikq.yaml
+    |       
+    +---sweep-nsozfvap
+    |       config-1eicswdm.yaml
+    |       config-qohzq7ar.yaml
+    |       config-zel6mgep.yaml
+    |       
+    +---sweep-rrbxbjns
+    |       config-2gj34iqd.yaml
+    |       config-95efv5o0.yaml
+    |       
+    +---sweep-s7kgx86p
+    |       config-zia0abcv.yaml
+    |       
+    +---sweep-tfegc891
+    |       config-qwiviha8.yaml
+    |       config-x328r96q.yaml
+    |       config-xs28t1tl.yaml
+    |       
+    +---sweep-u309tu0h
+    |       config-d816jjs7.yaml
+    |       config-k6mziefe.yaml
+    |       config-kwbscldz.yaml
+    |       config-tzix3a80.yaml
+    |       config-wh3xfe45.yaml
+    |       config-x84343ut.yaml
+    |       
+    +---sweep-vdo207jl
+    |       config-08b9am74.yaml
+    |       config-08tdozez.yaml
+    |       config-0ai9k990.yaml
+    |       config-0v8qjv19.yaml
+    |       config-110py1es.yaml
+    |       config-1h9tqplz.yaml
+    |       config-1zjpcjsw.yaml
+    |       config-3f5bixni.yaml
+    |       config-446a8zj6.yaml
+    |       config-4jqipx63.yaml
+    |       config-4lhj21xq.yaml
+    |       config-5dtvefvv.yaml
+    |       config-5f0l8f9k.yaml
+    |       config-5kf3wdv9.yaml
+    |       config-78234d1w.yaml
+    |       config-8bt561xo.yaml
+    |       config-8g9h148i.yaml
+    |       config-b9rqwj0h.yaml
+    |       config-cbbajo84.yaml
+    |       config-e0tk6b9u.yaml
+    |       config-eb6xcsbn.yaml
+    |       config-fas3vj4y.yaml
+    |       config-fpnaoyf6.yaml
+    |       config-hg8wcttw.yaml
+    |       config-huy64jkp.yaml
+    |       config-int7fzge.yaml
+    |       config-ip3npt2d.yaml
+    |       config-j0ywnsud.yaml
+    |       config-jbiu6e3a.yaml
+    |       config-kiq8o2qb.yaml
+    |       config-nq8zrbrt.yaml
+    |       config-nwip8ix0.yaml
+    |       config-o7txafji.yaml
+    |       config-t2rc1ovl.yaml
+    |       config-tnovbolb.yaml
+    |       config-wea6okyl.yaml
+    |       config-wevrjh2y.yaml
+    |       config-x0steuc0.yaml
+    |       config-xkxk2nkd.yaml
+    |       config-y0c0ftfo.yaml
+    |       config-yilwhmky.yaml
+    |       config-zid80frn.yaml
+    |       
+    \---sweep-y4ybhlmo
+            config-b3bzzday.yaml
+            config-bdomgpaa.yaml
+            
