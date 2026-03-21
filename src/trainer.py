@@ -1,6 +1,6 @@
 import torch
 from sklearn.metrics import accuracy_score, f1_score, confusion_matrix, precision_score, recall_score
-from sklearn.metrics import roc_curve, roc_auc_score
+from sklearn.metrics import roc_curve, roc_auc_score, precision_recall_curve, auc
 
 import numpy as np
 import torch
@@ -43,7 +43,7 @@ class Trainer:
     def eval_epoch(self, val_loader):
         self.model.eval()
         all_probs, all_labels = [], []
-
+        total_val_loss = 0.0
         with torch.no_grad():
             for x, y in val_loader:
                 x = x.to(self.device)
@@ -51,13 +51,15 @@ class Trainer:
 
                 logits = self.model(x)
                 probs = torch.sigmoid(logits)
+                loss = self.criterion(logits, y)
+                total_val_loss += loss.item() * x.size(0)
+                all_probs.append(probs.cpu()) 
+                all_labels.append(y.cpu())
 
-                all_probs.append(probs.detach().cpu().numpy().reshape(-1))
-                all_labels.append(y.detach().cpu().numpy().reshape(-1))
+        all_probs = torch.cat(all_probs).numpy().flatten()
+        all_labels = torch.cat(all_labels).numpy().flatten()
 
-        all_probs = np.concatenate(all_probs)    
-        all_labels = np.concatenate(all_labels)  
-
+        avg_val_loss = total_val_loss / len(val_loader.dataset)
         thresholds = np.linspace(0.01, 0.99, 99)
         best_f1, best_t = -1.0, 0.5
     
@@ -71,11 +73,12 @@ class Trainer:
         acc = accuracy_score(all_labels, best_preds)
         precision = precision_score(all_labels, best_preds, zero_division=0)
         recall = recall_score(all_labels, best_preds, zero_division=0)
-        return acc, best_f1, best_t, precision, recall
+        return avg_val_loss, acc, best_f1, best_t, precision, recall
 
     def fit(self, train_loader, val_loader, epochs, verbose=False):
         history = {
-            "loss": [], 
+            "loss": [],
+            "val_loss": [], 
             "val_acc": [], 
             "val_f1": [], 
             "best_t": [], 
@@ -85,20 +88,21 @@ class Trainer:
 
         for epoch in range(epochs):
             loss = self.train_epoch(train_loader)
-            acc, f1, best_t, precision, recall = self.eval_epoch(val_loader)
+            val_loss, acc, f1, best_t, precision, recall = self.eval_epoch(val_loader)
 
             if self.scheduler:
                 self.scheduler.step()
 
 
             history["loss"].append(loss)
+            history["val_loss"].append(val_loss)
             history["val_acc"].append(acc)
             history["val_f1"].append(f1)
             history["best_t"].append(best_t)
             history["val_precision"].append(precision)
             history["val_recall"].append(recall)
             if verbose:
-                print(f"Epoch {epoch+1} | loss={loss:.4f} | val_acc={acc:.4f} | val_f1={f1:.4f}")
+                print(f"Epoch {epoch+1} | loss={loss:.4f} | val loss={val_loss:.4f} | val_acc={acc:.4f} | val_f1={f1:.4f}")
 
         return history
 
@@ -139,13 +143,37 @@ class Trainer:
                 logits = self.model(x)
                 probs = torch.sigmoid(logits)
 
-                all_probs.append(probs.detach().cpu().numpy().reshape(-1))
-                all_labels.append(y.detach().cpu().numpy().reshape(-1))
+                all_probs.append(probs.cpu()) 
+                all_labels.append(y.cpu())
 
-        all_probs = np.concatenate(all_probs)
-        all_labels = np.concatenate(all_labels)
+        all_probs = torch.cat(all_probs).numpy().flatten()
+        all_labels = torch.cat(all_labels).numpy().flatten()
 
         fpr, tpr, thresholds = roc_curve(all_labels, all_probs)
         roc_auc = roc_auc_score(all_labels, all_probs)
 
         return fpr, tpr, thresholds, roc_auc
+    
+    def pr_values(self, val_loader):
+        self.model.eval()
+        all_probs, all_labels = [], []
+
+        with torch.no_grad():
+            for x, y in val_loader:
+                x = x.to(self.device)
+                y = y.to(self.device)
+
+                logits = self.model(x)
+                probs = torch.sigmoid(logits)
+
+                all_probs.append(probs.cpu()) 
+                all_labels.append(y.cpu())
+
+        all_probs = torch.cat(all_probs).numpy().flatten()
+        all_labels = torch.cat(all_labels).numpy().flatten()
+
+        precision, recall, thresholds = precision_recall_curve(all_labels, all_probs)
+        pr_auc = auc(recall, precision)
+
+
+        return precision, recall, thresholds, pr_auc
