@@ -29,11 +29,12 @@ def run_training(cfg, type, use_wandb=False, log= False, data = None, folder = N
     if data:
          X_train, X_test, y_train, y_test = data
     else:
-        X, y = load_data(cfg.data.path)
+        X, y, _ = load_data(cfg.data.path)
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
         scaler = StandardScaler()
         X_train = scaler.fit_transform(X_train) 
         X_test  = scaler.transform(X_test)
+
     if type == "focal_loss":
         sampler = None
         shuffle_dataloader = True
@@ -46,9 +47,9 @@ def run_training(cfg, type, use_wandb=False, log= False, data = None, folder = N
     elif type == "sampler":
         shuffle_dataloader = False
 
-        class_counts = np.bincount(y_train)
+        class_counts = np.bincount(y_train.astype(int))
         class_weights = 1.0 / class_counts
-        sample_weights = class_weights[y_train]
+        sample_weights = class_weights[y_train.astype(int)]
         sample_weights = torch.DoubleTensor(sample_weights)
         
         sampler = WeightedRandomSampler(
@@ -82,7 +83,7 @@ def run_training(cfg, type, use_wandb=False, log= False, data = None, folder = N
 
     pin_memory = (device.type == "cuda")
     
-    y_train = y_train.astype(int)
+    
 
     train_loader = DataLoader(
         train_ds,
@@ -141,6 +142,7 @@ def run_training(cfg, type, use_wandb=False, log= False, data = None, folder = N
             out_dir = out_dir/ run_name
 
         out_dir.mkdir(parents=True, exist_ok=True)
+        
         cm = trainer.confusion_matrix(val_loader, threshold = threshold)
         
         cm_path = out_dir / "confusion_matrix.txt"
@@ -158,7 +160,7 @@ def run_training(cfg, type, use_wandb=False, log= False, data = None, folder = N
         save_roc(trainer, val_loader, roc_path)
 
         pr_path = out_dir / "pr_curve.png"
-        save_pr(trainer, val_loader, pr_path)
+        save_pr(trainer, val_loader, pr_path, y_test)
 
 
     if use_wandb:

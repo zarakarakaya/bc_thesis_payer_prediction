@@ -3,7 +3,8 @@ from pathlib import Path
 import json
 import numpy as np
 from src.trainer import Trainer
-import matplotlib as plt
+import matplotlib.pyplot as plt
+
 def load_yaml(path):
     with open(path, "r") as f:
         return yaml.safe_load(f)

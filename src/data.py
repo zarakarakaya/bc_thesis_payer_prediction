@@ -28,7 +28,8 @@ def load_data(path):
 
     df_encoded = pd.get_dummies(df, columns=['network_name'])
 
-    X = df_encoded.drop(columns=["payer_d7"]).values.astype("float32")
+    X_df = df_encoded.drop(columns=["payer_d7"])
     y = df_encoded["payer_d7"].values.astype("float32")
-
-    return X, y
+    X = X_df.values.astype("float32")
+    feature_names = X_df.columns
+    return X, y, feature_names

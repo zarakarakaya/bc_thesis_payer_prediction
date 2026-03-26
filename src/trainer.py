@@ -3,8 +3,6 @@ from sklearn.metrics import accuracy_score, f1_score, confusion_matrix, precisio
 from sklearn.metrics import roc_curve, roc_auc_score, precision_recall_curve, auc
 
 import numpy as np
-import torch
-from src.model import MLP
 class Trainer:
     def __init__(
         self,

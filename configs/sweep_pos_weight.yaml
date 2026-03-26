@@ -21,10 +21,7 @@ parameters:
       - ["tanh", "relu", "tanh"]
       - ["relu", "relu", "relu"]
       - ["relu", "tanh", "relu"]
-  alpha:
-    min: 0.25
-    max: 0.95
-
-  gamma:
+  pos_weight:
     min: 1
-    max: 5
+    max: 70
+

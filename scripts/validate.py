@@ -19,7 +19,7 @@ def average_history(fold_history):
 def validate(cfg, type,  X=None, y=None, use_wandb = False):
 
     if X is None or y is None:
-        X, y = load_data(cfg.data.path)
+        X, y, _ = load_data(cfg.data.path)
 
 
     n_folds = cfg.training.n_folds
