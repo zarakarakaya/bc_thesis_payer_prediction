@@ -11,6 +11,7 @@ import numpy as np
 from pathlib import Path
 import torch.nn.functional as F
 import matplotlib.pyplot as plt
+from helper import get_samples
 def model_forward(x):
     return torch.sigmoid(model(x)).squeeze(1)
 from sklearn.metrics import precision_recall_curve
@@ -31,32 +32,9 @@ X_test = torch.tensor(X_test, dtype=torch.float32).to(device)
 model = torch.load(out_dir, weights_only=False)
 
 model.eval()
-with torch.no_grad():
-    logits = model(X_test)
-    probs = torch.sigmoid(logits).cpu().numpy().flatten()
+groups = get_samples(cfg, model)
 
-
-thresholds = np.linspace(0.01, 0.99, 99)
-best_f1, best_t = -1.0, 0.5
-
-for t in thresholds:
-    preds = (probs >= t).astype(int)
-    from sklearn.metrics import f1_score
-    f1 = f1_score(y_test, preds, zero_division=0)
-    if f1 > best_f1:
-        best_f1, best_t = f1, t
-
-
-
-
-y_pred = (probs >= best_t).astype(int)
-groups = {
-    "TP":  (y_pred == 1) & (y_test == 1),
-    "FP": (y_pred == 1) & (y_test == 0),
-    "TN": (y_pred == 0) & (y_test == 0),
-    "FN": (y_pred == 0) & (y_test == 1)
-}
-bg_original = shap.sample(X_train, 100)
+bg_original = shap.sample(X_train, 500)
 explainer = shap.DeepExplainer(model, bg_original)
 
 for title, mask in groups.items():
