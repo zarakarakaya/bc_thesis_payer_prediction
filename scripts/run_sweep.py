@@ -10,7 +10,7 @@ def main():
 
     sweep_id = wandb.sweep(
         sweep=sweep_config,
-        project="bc_final_bce_logit_loss",
+        project="bc_final_bce_logit_loss_vol2",
         entity="karakayazara-comenius-university-in-bratislava",
     )
 

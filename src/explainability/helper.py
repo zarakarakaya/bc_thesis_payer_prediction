@@ -2,9 +2,14 @@ import torch
 from src.data import load_data
 from sklearn.model_selection import train_test_split
 import numpy as np 
-def get_samples(cfg, model):
+from sklearn.preprocessing import StandardScaler
+def get_samples(cfg, model, scale = True):
     X, y, feature_names = load_data(cfg.data.path)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+    if scale: 
+        scaler = StandardScaler()
+        X_train = scaler.fit_transform(X_train) 
+        X_test  = scaler.transform(X_test)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     X_train = torch.tensor(X_train, dtype=torch.float32).to(device)

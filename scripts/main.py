@@ -9,7 +9,7 @@ from scripts.train import run_training
 import json
 import wandb
 def train(cfg= None,  use_wandb = False):
-    folder = "bce"
+    folder = "bce_2"
     type = "bce"
     if not cfg:
         cfg = load_config("configs/best.yaml")

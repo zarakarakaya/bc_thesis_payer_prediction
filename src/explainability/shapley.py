@@ -1,24 +1,24 @@
 import shap
 
 import torch
-from torch.utils.data import DataLoader
+
 from sklearn.model_selection import train_test_split
-from src.data import load_data, PlayerDataset
+from src.data import load_data
 
 from src.config import load_config
 
 import numpy as np
 from pathlib import Path
-import torch.nn.functional as F
+
 import matplotlib.pyplot as plt
-from helper import get_samples
+from src.explainability.helper import get_samples
 def model_forward(x):
     return torch.sigmoid(model(x)).squeeze(1)
-from sklearn.metrics import precision_recall_curve
 
-folder = "focal_loss_2"
 
-out_dir = Path("results") / folder / "model.pt"
+folder = "focal_loss"
+
+out_dir = Path("results") / folder /"best"/ "model.pt"
 
 
 cfg = load_config("configs/best.yaml")
@@ -34,10 +34,10 @@ model = torch.load(out_dir, weights_only=False)
 model.eval()
 groups = get_samples(cfg, model)
 
-bg_original = shap.sample(X_train, 500)
+bg_original = shap.sample(X_train, 200)
 explainer = shap.DeepExplainer(model, bg_original)
 
-for title, mask in groups.items():
+for group, mask in groups.items():
     indices = np.where(mask)[0]
 
     sample_idx = indices[:100]
@@ -48,6 +48,9 @@ for title, mask in groups.items():
     shap_vals = np.squeeze(shap_vals)
 
     plt.figure(figsize=(10, 6))
-    plt.title(f"SHAP: {title}")
+    plt.title(f"SHAP: {group}")
     shap.summary_plot(shap_vals, X_sub.cpu().numpy(), feature_names=feature_names, show=False)
-    plt.show()
+    
+    output_path = Path("results") / folder / "exp" / "shap" / f"{group}_gradient.png"
+    plt.savefig(output_path)
+    #plt.show()
