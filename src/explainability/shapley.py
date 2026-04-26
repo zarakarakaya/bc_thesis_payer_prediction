@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 from src.data import load_data
 
 from src.config import load_config
-
+from sklearn.preprocessing import StandardScaler
 import numpy as np
 from pathlib import Path
 
@@ -17,13 +17,16 @@ def model_forward(x):
 
 
 folder = "focal_loss"
-
+mode = "single"
 out_dir = Path("results") / folder /"best"/ "model.pt"
 
 
 cfg = load_config("configs/best.yaml")
 X, y, feature_names = load_data(cfg.data.path)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train) 
+X_test  = scaler.transform(X_test)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 X_train = torch.tensor(X_train, dtype=torch.float32).to(device)
@@ -34,23 +37,62 @@ model = torch.load(out_dir, weights_only=False)
 model.eval()
 groups = get_samples(cfg, model)
 
-bg_original = shap.sample(X_train, 200)
+bg_original = shap.sample(X_train, 500)
 explainer = shap.DeepExplainer(model, bg_original)
 
+cohort_explanations = {}
 for group, mask in groups.items():
     indices = np.where(mask)[0]
+    if mode == "single":
+        sample_idx = indices[[0]]          
+        X_sub = X_test[sample_idx]
 
-    sample_idx = indices[:100]
-    X_sub = X_test[sample_idx]
-    
-    shap_vals = explainer.shap_values(X_sub)
+        shap_vals = explainer.shap_values(X_sub)
+        shap_vals = np.squeeze(shap_vals)  
 
-    shap_vals = np.squeeze(shap_vals)
+        exp = shap.Explanation(
+            values        = shap_vals,
+            data          = X_sub.cpu().numpy().squeeze(),
+            base_values   = explainer.expected_value,
+            feature_names = feature_names,
+        )
 
-    plt.figure(figsize=(10, 6))
-    plt.title(f"SHAP: {group}")
-    shap.summary_plot(shap_vals, X_sub.cpu().numpy(), feature_names=feature_names, show=False)
-    
-    output_path = Path("results") / folder / "exp" / "shap" / f"{group}_gradient.png"
+        plt.figure(figsize=(10, 6))
+        shap.plots.waterfall(exp, show=False)
+        plt.title(f"SHAP waterfall (single sample): {group}")
+    else:
+        sample_idx = indices[:100]
+        X_sub = X_test[sample_idx]
+        
+        shap_vals = explainer.shap_values(X_sub)
+
+        shap_vals = np.squeeze(shap_vals)
+
+        cohort_explanations[group] = shap.Explanation(
+            values = shap_vals,
+            data = X_sub.cpu().numpy(),
+            feature_names = feature_names,
+        )
+        
+        plt.figure(figsize=(10, 6))
+        plt.title(f"SHAP: {group}")
+        shap.summary_plot(shap_vals, X_sub.cpu().numpy(), feature_names=feature_names, show=False)
+        
+    output_path = Path("results") / folder / "exp" / "shap" / f"{mode}_{group}_gradient.png"
     plt.savefig(output_path)
-    #plt.show()
+    plt.show()
+
+'''
+fig, ax = plt.subplots(figsize=(12, 7))
+shap.plots.bar(
+    {name: exp.abs.mean(0) for name, exp in cohort_explanations.items()},
+    show=False,
+)
+plt.title("Mean absolute SHAP value by Group")
+plt.tight_layout()
+
+output_path = Path("results") / folder / "exp" / "shap" / "cohort_bar_tp_tn_fp_fn.png"
+output_path.parent.mkdir(parents=True, exist_ok=True)
+plt.savefig(output_path, dpi=150)
+#plt.show()
+'''

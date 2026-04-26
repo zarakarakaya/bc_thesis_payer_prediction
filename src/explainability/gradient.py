@@ -13,8 +13,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from src.explainability.helper import get_samples
 
-folder = "bce"
-
+folder = "focal_loss"
+mode = "singleee"
 out_dir = Path("results") / folder /"best"/ "model.pt"
 model = torch.load(out_dir, weights_only=False)
 
@@ -39,39 +39,52 @@ groups = get_samples(cfg, model)
 
 for group, mask in groups.items():
     indices = np.where(mask)[0]
-
-    all_importance = []
-
-    
-    X_group = X_test[indices]
-    y_group = y_test[indices]
-    group_ds = PlayerDataset(X_group, y_group)
-
-    loader = DataLoader(
-        group_ds,
-        batch_size=64,
-        num_workers=0,
-        pin_memory=pin_memory,
-        shuffle=False
-    )
-
-    for inputs, _ in loader:
-        inputs = inputs.to(device)
+    if mode == "single": 
+        sample_idx = indices[0]
+        inputs = torch.tensor(X_test[[sample_idx]], dtype=torch.float32).to(device)
         inputs.requires_grad = True
 
         outputs = model(inputs)
         probs = torch.sigmoid(outputs).squeeze()
 
         model.zero_grad()
-        probs.sum().backward()
+        probs.backward()
 
-        grads = inputs.grad
+        final_importance = inputs.grad.abs().squeeze().cpu().numpy()
+    else:
+        all_importance = []
 
-        importance = grads.abs().mean(dim=0)
+        
+        X_group = X_test[indices]
+        y_group = y_test[indices]
+        group_ds = PlayerDataset(X_group, y_group)
 
-        all_importance.append(importance.detach().cpu())
+        loader = DataLoader(
+            group_ds,
+            batch_size=64,
+            num_workers=0,
+            pin_memory=pin_memory,
+            shuffle=False
+        )
+        
+    
+        for inputs, _ in loader:
+            inputs = inputs.to(device)
+            inputs.requires_grad = True
 
-    final_importance = torch.stack(all_importance).mean(dim=0).numpy()
+            outputs = model(inputs)
+            probs = torch.sigmoid(outputs).squeeze()
+
+            model.zero_grad()
+            probs.sum().backward()
+
+            grads = inputs.grad
+
+            importance = grads.abs().mean(dim=0)
+
+            all_importance.append(importance.detach().cpu())
+
+        final_importance = torch.stack(all_importance).mean(dim=0).numpy()
 
 
     indices = np.argsort(final_importance)[::-1]
@@ -85,11 +98,11 @@ for group, mask in groups.items():
     plt.xticks(range(len(sorted_importance)), sorted_features, rotation=90)
     plt.xlabel("Features")
     plt.ylabel("Importance")
-    plt.title("Gradient feature importance: " + group)
+    plt.title(f"Gradient feature importance: {group}")
     plt.tight_layout()
 
 
-    output_path = Path("results") / folder / "exp" / "gradient" / f"{group}_gradient.png"
+    output_path = Path("results") / folder / "exp" / "gradient" / f"{mode}_{group}_gradient.png"
     plt.savefig(output_path)
 
     plt.show()

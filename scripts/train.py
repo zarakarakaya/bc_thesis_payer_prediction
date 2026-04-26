@@ -148,9 +148,7 @@ def run_training(cfg, type, use_wandb=False, log= False, data = None, folder = N
         cm_path = out_dir / "confusion_matrix.txt"
 
         
-        with open(cm_path, "w") as f:
-            f.write("Confusion Matrix (rows=true, cols=pred)\n\n")
-            f.write(np.array2string(cm))
+        np.savetxt(cm_path, cm, delimiter=",", fmt='%d')
 
         cfg_path = out_dir / "config.json"
         with open(cfg_path, "w") as f:

@@ -9,7 +9,7 @@ from scripts.train import run_training
 import json
 import wandb
 def train(cfg= None,  use_wandb = False):
-    folder = "bce_2"
+    folder = "test"
     type = "bce"
     if not cfg:
         cfg = load_config("configs/best.yaml")
@@ -32,3 +32,4 @@ def train(cfg= None,  use_wandb = False):
             json.dump(history, f, indent=4)
     with open(out_dir / "val_history.json", "w") as f:
             json.dump(avg, f, indent=4)
+

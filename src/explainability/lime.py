@@ -6,14 +6,14 @@ from sklearn.preprocessing import LabelEncoder
 import sklearn
 from src.data import load_data
 from src.config import load_config
-
+from sklearn.preprocessing import StandardScaler
 import numpy as np
 from pathlib import Path
 import pandas as pd
 
 from src.explainability.helper import get_samples
 
-folder = "bce"
+folder = "focal_loss"
 out_dir = Path("results") / folder / "best" / "model.pt"
 cfg = load_config("configs/best.yaml")
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -27,6 +27,8 @@ df['actions_per_session'] = df['total_actions'] / df['session_count']
 df = df[df['payer_d0'] == 0].drop(columns='payer_d0')
 X = df.drop(columns=["payer_d7"])
 y = df["payer_d7"].values.astype("float32")
+
+
 
 #feature names PRED one hot
 feature_names = list(X.columns)
@@ -49,9 +51,14 @@ X = X.values
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42, stratify=y
 )
-#feature names PO one hot
-_, _, model_feature_names = load_data(cfg.data.path, encode=True)
+
+#feature names PO one hot + potrebujem fitnut scaler na original datach
+X_helper, y_helper, model_feature_names = load_data(cfg.data.path, encode=True)
 model_feature_names = list(model_feature_names)
+
+X_helper_train, _, _, _ = train_test_split(X_helper, y_helper, test_size=0.2, random_state=42, stratify=y)
+scaler = StandardScaler()
+scaler.fit(X_helper_train)
 
 #lime potrebuje tuto funkciu, ktora zoberie tie pertrubed data a da ich do modelu
 #lenze model je nauceny na one hot takze to musime upravit
@@ -62,9 +69,9 @@ def predict_fn(x):
     df_x = pd.get_dummies(df_x, columns=['network_name'])
     df_x = df_x.reindex(columns=model_feature_names, fill_value=0)
     
-    np_array = df_x.values.astype(np.float32)
-    
-    x_tensor = torch.tensor(np_array).to(device)
+    df_x = df_x.values.astype(np.float32)
+    x_scaled = scaler.transform(df_x)
+    x_tensor = torch.tensor(x_scaled).to(device)
     
     with torch.no_grad():
         logits = model(x_tensor)
