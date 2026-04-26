@@ -16,7 +16,7 @@ data/*.csv
 sweep_runs/
 
 # notebooks
-*.ipynb
+
 
 # OS
 .DS_Store
