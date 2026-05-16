@@ -3,12 +3,10 @@ data:
 
 training:
   epochs: 75
-  batch_size: 64
+  batch_size: 128
   lr: 0.0001
-  pos_weight: 8
+  pos_weight: 1
   n_folds: 5
-  alpha: 0.25
-  gamma: 2
 model:
   hidden_layers: [64, 32, 16]
-  activations: ["tanh", "relu", "tanh"]
+  activations: ["relu", "relu", "relu"]
