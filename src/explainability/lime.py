@@ -91,7 +91,7 @@ explainer = lime.lime_tabular.LimeTabularExplainer(
 
 import matplotlib.pyplot as plt
 groups = get_samples(cfg, model)
-
+mode = "n"
 for group, mask in groups.items():
 
     indices = np.where(mask)[0]
@@ -106,8 +106,10 @@ for group, mask in groups.items():
 
 
     fig = exp.as_pyplot_figure()
-    plt.title(f"LIME :{group}")
+    fig.set_size_inches(10, 4)
+    plt.title(f"LIME: {group}")
     plt.tight_layout()
     output_path = Path("results") / folder / "exp" / "lime" / f"{group}_lime.png"
-    plt.savefig(output_path)
+    plt.savefig(output_path, dpi=150, bbox_inches='tight')
     plt.show()
+    

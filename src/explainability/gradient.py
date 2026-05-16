@@ -13,8 +13,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from src.explainability.helper import get_samples
 
-folder = "focal_loss"
-mode = "singleee"
+folder = "bce"
+mode = "group"
 out_dir = Path("results") / folder /"best"/ "model.pt"
 model = torch.load(out_dir, weights_only=False)
 
@@ -35,7 +35,7 @@ model.eval()
 
 groups = get_samples(cfg, model)
 
-
+group_importances = {}
 
 for group, mask in groups.items():
     indices = np.where(mask)[0]
@@ -85,25 +85,32 @@ for group, mask in groups.items():
             all_importance.append(importance.detach().cpu())
 
         final_importance = torch.stack(all_importance).mean(dim=0).numpy()
+    group_importances[group] = final_importance
+for group, importance in group_importances.items():
+    group_importances[group] = importance / importance.sum()       
+importance = np.sum(list(group_importances.values()), axis=0)
+
+top_indices = np.argsort(importance)[::-1]
+top_features = feature_names[top_indices]
 
 
-    indices = np.argsort(final_importance)[::-1]
-
-    sorted_importance = final_importance[indices]
-    sorted_features = feature_names[indices]
-
-
-    plt.figure(figsize=(14, 6))
-    plt.bar(range(len(sorted_importance)), sorted_importance)
-    plt.xticks(range(len(sorted_importance)), sorted_features, rotation=90)
-    plt.xlabel("Features")
-    plt.ylabel("Importance")
-    plt.title(f"Gradient feature importance: {group}")
-    plt.tight_layout()
+n_groups = len(group_importances)
+x = np.arange(len(top_features))
+width = 0.8 / n_groups
 
 
-    output_path = Path("results") / folder / "exp" / "gradient" / f"{mode}_{group}_gradient.png"
-    plt.savefig(output_path)
+plt.figure(figsize=(14, 5))
+for i, (group, importance) in enumerate(group_importances.items()):
+    vals = importance[top_indices]
+    plt.bar(x + i * width, vals, width, label=group)
 
-    plt.show()
+plt.xticks(x + width * (n_groups - 1) / 2, top_features, rotation=45, ha='right')
+plt.xlabel("Features")
+plt.ylabel("Importance")
+plt.title("Gradient feature importance by group")
+plt.legend()
+plt.tight_layout()
 
+output_path = Path("results") / folder / "exp" / "gradient" / f"{mode}_all_groups_gradient.png"
+plt.savefig(output_path)
+plt.show()

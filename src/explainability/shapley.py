@@ -12,11 +12,13 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 from src.explainability.helper import get_samples
+
+
 def model_forward(x):
     return torch.sigmoid(model(x)).squeeze(1)
 
 
-folder = "focal_loss"
+folder = "sampler"
 mode = "single"
 out_dir = Path("results") / folder /"best"/ "model.pt"
 
@@ -36,53 +38,68 @@ model = torch.load(out_dir, weights_only=False)
 
 model.eval()
 groups = get_samples(cfg, model)
-
+np.random.seed(42)
 bg_original = shap.sample(X_train, 500)
 explainer = shap.DeepExplainer(model, bg_original)
 
 cohort_explanations = {}
 for group, mask in groups.items():
     indices = np.where(mask)[0]
+
     if mode == "single":
-        sample_idx = indices[[0]]          
+        sample_idx = indices[[0]]
         X_sub = X_test[sample_idx]
 
         shap_vals = explainer.shap_values(X_sub)
-        shap_vals = np.squeeze(shap_vals)  
+        shap_vals = np.squeeze(shap_vals)
 
         exp = shap.Explanation(
-            values        = shap_vals,
-            data          = X_sub.cpu().numpy().squeeze(),
-            base_values   = explainer.expected_value,
-            feature_names = feature_names,
+            values=shap_vals,
+            data=X_sub.cpu().numpy().squeeze(),
+            base_values=explainer.expected_value,
+            feature_names=feature_names,
         )
 
-        plt.figure(figsize=(10, 6))
         shap.plots.waterfall(exp, show=False)
-        plt.title(f"SHAP waterfall (single sample): {group}")
+        fig = plt.gcf()
+        fig.set_size_inches(8, 8)
+        ax = plt.gca()
+        ax.tick_params(labelsize=10)
+        ax.set_xlabel(ax.get_xlabel(), fontsize=20)
+        for text in fig.texts:
+            text.set_fontsize(25)
+        plt.title(f"SHAP waterfall (single sample): {group}", fontsize=16)
+        plt.tight_layout()
+
     else:
         sample_idx = indices[:100]
         X_sub = X_test[sample_idx]
-        
-        shap_vals = explainer.shap_values(X_sub)
 
+        shap_vals = explainer.shap_values(X_sub)
         shap_vals = np.squeeze(shap_vals)
 
         cohort_explanations[group] = shap.Explanation(
-            values = shap_vals,
-            data = X_sub.cpu().numpy(),
-            feature_names = feature_names,
+            values=shap_vals,
+            data=X_sub.cpu().numpy(),
+            feature_names=feature_names,
         )
+
+        shap.summary_plot(shap_vals, X_sub.cpu().numpy(), feature_names=feature_names, max_display=10, show=False)
+        fig = plt.gcf()
+        fig.set_size_inches(8, 8)
+        ax = plt.gca()
+        ax.tick_params(labelsize=16)
+        ax.set_xlabel(ax.get_xlabel(), fontsize=14)
+        for text in fig.texts:
+            text.set_fontsize(14)
+        plt.title(f"SHAP: {group}", fontsize=14)
+        plt.tight_layout()
         
-        plt.figure(figsize=(10, 6))
-        plt.title(f"SHAP: {group}")
-        shap.summary_plot(shap_vals, X_sub.cpu().numpy(), feature_names=feature_names, show=False)
-        
-    output_path = Path("results") / folder / "exp" / "shap" / f"{mode}_{group}_gradient.png"
-    plt.savefig(output_path)
+    output_path = Path("results") / folder / "exp" / "shap" / f"{mode}_{group}_shap.png"
+    plt.savefig(output_path, dpi=150, bbox_inches='tight')
     plt.show()
 
-'''
+
 fig, ax = plt.subplots(figsize=(12, 7))
 shap.plots.bar(
     {name: exp.abs.mean(0) for name, exp in cohort_explanations.items()},
@@ -94,5 +111,4 @@ plt.tight_layout()
 output_path = Path("results") / folder / "exp" / "shap" / "cohort_bar_tp_tn_fp_fn.png"
 output_path.parent.mkdir(parents=True, exist_ok=True)
 plt.savefig(output_path, dpi=150)
-#plt.show()
-'''
+plt.show()

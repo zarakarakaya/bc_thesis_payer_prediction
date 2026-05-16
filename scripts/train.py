@@ -189,17 +189,3 @@ def run_training(cfg, type, use_wandb=False, log= False, data = None, folder = N
                 }
             )
     return history, trainer
-
-
-
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--config", type=str, required=True)
-    args = parser.parse_args()
-
-    cfg = load_config(args.config)
-    run_training(cfg, use_wandb=False)
-
-
-if __name__ == "__main__":
-    main()

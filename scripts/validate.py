@@ -79,13 +79,4 @@ def validate(cfg, type,  X=None, y=None, use_wandb = False):
             )
 
     return avg
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--config", type=str, required=True)
-    args = parser.parse_args()
 
-    cfg = load_config(args.config)
-    validate(cfg, use_wandb=False)
-
-if __name__ == "__main__":
-    main()
