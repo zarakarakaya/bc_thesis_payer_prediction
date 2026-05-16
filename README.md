@@ -1,4 +1,4 @@
-# 🎮 Mobile Game Payer Prediction
+# Mobile Game Payer Prediction
 
 > Binary classification of mobile game payers using deep neural networks 
 
