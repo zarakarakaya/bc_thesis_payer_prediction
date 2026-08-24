@@ -5,7 +5,7 @@ training:
   epochs: 75
   batch_size: 128
   lr: 0.0001
-  pos_weight: 60
+  pos_weight: 1
   n_folds: 5
 model:
   hidden_layers: [64, 32, 16]
