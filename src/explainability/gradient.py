@@ -15,7 +15,7 @@ from src.explainability.helper import get_samples
 
 folder = "bce"
 mode = "group"
-out_dir = Path("results") / folder /"best"/ "model.pt"
+out_dir = Path("results") / "work" /"best"/ "model.pt"
 model = torch.load(out_dir, weights_only=False)
 
 cfg = load_config("configs/best.yaml")
@@ -111,6 +111,6 @@ plt.title("Gradient feature importance by group")
 plt.legend()
 plt.tight_layout()
 
-output_path = Path("results") / folder / "exp" / "gradient" / f"{mode}_all_groups_gradient.png"
+output_path = Path("results") / "work" / "exp" / "gradient" / f"{mode}_all_groups_gradient.png"
 plt.savefig(output_path)
 plt.show()

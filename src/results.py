@@ -35,7 +35,7 @@ plt.rcParams.update({
 
 })
 
-folder = "sampler"
+folder = "work"
 
 out_dir = Path("results") / folder /"best"
 

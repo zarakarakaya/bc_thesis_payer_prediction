@@ -18,9 +18,9 @@ def model_forward(x):
     return torch.sigmoid(model(x)).squeeze(1)
 
 
-folder = "sampler"
-mode = "single"
-out_dir = Path("results") / folder /"best"/ "model.pt"
+
+mode = "group"
+out_dir = Path("results") / "work" /"best"/ "model.pt"
 
 
 cfg = load_config("configs/best.yaml")
@@ -52,7 +52,10 @@ for group, mask in groups.items():
 
         shap_vals = explainer.shap_values(X_sub)
         shap_vals = np.squeeze(shap_vals)
-
+        logits = model(X_sub).detach().cpu().numpy().squeeze()
+        p = 1 / (1 + np.exp(-logits))
+        local_slope = p * (1 - p)                      # shape (batch,)
+        shap_vals_prob_approx = shap_vals * local_slope[:, None]  
         exp = shap.Explanation(
             values=shap_vals,
             data=X_sub.cpu().numpy().squeeze(),
@@ -72,30 +75,35 @@ for group, mask in groups.items():
         plt.tight_layout()
 
     else:
-        sample_idx = indices[:100]
-        X_sub = X_test[sample_idx]
+            sample_idx = indices[:100]
+            X_sub = X_test[sample_idx]
 
-        shap_vals = explainer.shap_values(X_sub)
-        shap_vals = np.squeeze(shap_vals)
+            shap_vals = explainer.shap_values(X_sub)
+            shap_vals = np.squeeze(shap_vals)          # logit-space, exact (additivity holds)
 
-        cohort_explanations[group] = shap.Explanation(
-            values=shap_vals,
-            data=X_sub.cpu().numpy(),
-            feature_names=feature_names,
-        )
+            logits = model(X_sub).detach().cpu().numpy().squeeze()   # shape (n_samples,)
+            p = 1 / (1 + np.exp(-logits))
+            local_slope = p * (1 - p)                                # shape (n_samples,)
+            shap_vals_prob_approx = shap_vals * local_slope[:, None] # shape (n_samples, n_features)
 
-        shap.summary_plot(shap_vals, X_sub.cpu().numpy(), feature_names=feature_names, max_display=10, show=False)
-        fig = plt.gcf()
-        fig.set_size_inches(8, 8)
-        ax = plt.gca()
-        ax.tick_params(labelsize=16)
-        ax.set_xlabel(ax.get_xlabel(), fontsize=14)
-        for text in fig.texts:
-            text.set_fontsize(14)
-        plt.title(f"SHAP: {group}", fontsize=14)
-        plt.tight_layout()
+            cohort_explanations[group] = shap.Explanation(
+                values=shap_vals_prob_approx,
+                data=X_sub.cpu().numpy(),
+                feature_names=feature_names,
+            )
+
+            shap.summary_plot(shap_vals_prob_approx, X_sub.cpu().numpy(), feature_names=feature_names, max_display=10, show=False)
+            fig = plt.gcf()
+            fig.set_size_inches(8, 8)
+            ax = plt.gca()
+            ax.tick_params(labelsize=16)
+            ax.set_xlabel("SHAP value (approx. impact on predicted probability)", fontsize=14)
+            for text in fig.texts:
+                text.set_fontsize(14)
+            plt.title(f"SHAP: {group}", fontsize=14)
+            plt.tight_layout()
         
-    output_path = Path("results") / folder / "exp" / "shap" / f"{mode}_{group}_shap.png"
+    output_path = Path("results") / "work" / "exp" / "shap" / f"{mode}_{group}_shap.png"
     plt.savefig(output_path, dpi=150, bbox_inches='tight')
     plt.show()
 
@@ -108,7 +116,7 @@ shap.plots.bar(
 plt.title("Mean absolute SHAP value by Group")
 plt.tight_layout()
 
-output_path = Path("results") / folder / "exp" / "shap" / "cohort_bar_tp_tn_fp_fn.png"
+output_path = Path("results") / "work" / "exp" / "shap" / "cohort_bar_tp_tn_fp_fn.png"
 output_path.parent.mkdir(parents=True, exist_ok=True)
 plt.savefig(output_path, dpi=150)
 plt.show()

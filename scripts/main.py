@@ -9,8 +9,8 @@ from scripts.train import run_training
 import json
 import wandb
 def train(cfg= None,  use_wandb = False):
-    folder = "test"
-    type = "bce"
+    folder = "work"
+    type = "sampler"
     if not cfg:
         cfg = load_config("configs/best.yaml")
     X, y, _ = load_data(cfg.data.path)
@@ -33,3 +33,5 @@ def train(cfg= None,  use_wandb = False):
     with open(out_dir / "val_history.json", "w") as f:
             json.dump(avg, f, indent=4)
 
+if __name__ == "__main__":
+    train()

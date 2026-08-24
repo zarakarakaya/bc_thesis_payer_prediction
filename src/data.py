@@ -21,20 +21,21 @@ class PlayerDataset(Dataset):
 
 def load_data(path, encode = True):
     df = pd.read_parquet(path)
-    #df = df.set_index('player_id')
+    df = df.set_index('player_id')
 
-    df['actions_per_session'] = df['total_actions'] / df['session_count']
-    df = df[df['payer_d0'] == 0].drop(columns='payer_d0')
+ 
+
     if encode:
         df = pd.get_dummies(df, columns=['network_name'])
 
-    X_df = df.drop(columns=["payer_d7"])
-    y = df["payer_d7"].values.astype("float32")
+    y = df["payer"].values.astype("float32")
+
+    X_df = df.drop(columns=["revenue_d7", "payer"])
+    
     if encode:
         X = X_df.values.astype("float32")
     else:
-        X = X_df.values 
+        X = X_df.values
     feature_names = X_df.columns
     return X, y, feature_names
-
 
