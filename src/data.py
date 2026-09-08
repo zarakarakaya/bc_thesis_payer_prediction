@@ -24,13 +24,11 @@ def load_data(path, encode = True):
     df = df.set_index('player_id')
 
  
-
-    if encode:
-        df = pd.get_dummies(df, columns=['network_name'])
+    df = pd.get_dummies(df, columns=['ecpm_network', 'media_source', 'platform'])
 
     y = df["payer"].values.astype("float32")
 
-    X_df = df.drop(columns=["revenue_d7", "payer"])
+    X_df = df.drop(columns=["revenue_d28", "payer"])
     
     if encode:
         X = X_df.values.astype("float32")
