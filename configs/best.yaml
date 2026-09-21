@@ -1,8 +1,8 @@
 data:
-  path: data/data_07092026-2.parquet
+  path: data/bc_dataset_ver11.parquet
 
 training:
-  epochs: 25
+  epochs: 30
   batch_size: 128
   lr: 0.0001
   pos_weight: 1

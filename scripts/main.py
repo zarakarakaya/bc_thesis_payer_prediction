@@ -10,47 +10,112 @@ from scripts.validate import validate
 from scripts.train import run_training
 import json
 import wandb
-def train(cfg= None,  use_wandb = False):
-    folder = "work"
-    type = "sampler"
-    if not cfg:
-        cfg = load_config("configs/best.yaml")
-    X, y, feature_names  = load_data(cfg.data.path)
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 
-    avg = validate(cfg, type = type, X = X_train, y = y_train, use_wandb=False)
+from datetime import datetime
+from pathlib import Path
 
-    rf = RandomForestClassifier(
-        n_estimators=300,
-        random_state=42,
-        class_weight="balanced",  # matches your imbalanced payer/non-payer split
-        n_jobs=-1,
-    )
-    selector = SelectFromModel(rf, threshold="median")  # keeps top ~half by importance
-    selector.fit(X_train, y_train)
+import pandas as pd
+import wandb
+from sklearn.model_selection import train_test_split
 
-    selected_mask = selector.get_support()
-    selected_feature_names = [f for f, keep in zip(feature_names, selected_mask) if keep]
-    print(f"selected {len(selected_feature_names)} / {len(feature_names)} features:")
-    print(selected_feature_names)
+from src.artifacts import save_run_bundle
+from src.data import load_data
+from src.preprocessing import Preprocessor
 
-    X_train = selector.transform(X_train)   
-    X_test = selector.transform(X_test) 
-
-    scaler = StandardScaler()
-    X_train = scaler.fit_transform(X_train) 
-    X_test  = scaler.transform(X_test)
-    data =  (X_train, X_test, y_train, y_test)
-    history, trainer = run_training(cfg, type = type, data=data, log=True, use_wandb=use_wandb, folder=folder)
-
-    out_dir = Path("results") / folder
+def make_run_dir(use_wandb):
     if use_wandb:
-        out_dir = out_dir / wandb.run.id
-    trainer.save_model(out_dir/"model.pt")
-    with open(out_dir / "history.json", "w") as f:
-            json.dump(history, f, indent=4)
-    with open(out_dir / "val_history.json", "w") as f:
-            json.dump(avg, f, indent=4)
+        run_id = wandb.run.id
+    else:
+        run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+    run_dir = Path("results") / "work" / run_id
+    run_dir.mkdir(parents=True, exist_ok=False)
+
+    return run_dir
+
+def train(cfg=None, use_wandb=False):
+    TYPE = 'sampler'  # 'focal_loss', 'sampler', or 'bce'
+    if cfg is None:
+        cfg = load_config("configs/best.yaml")
+
+    run_dir = make_run_dir(use_wandb)
+
+    X, y, feature_names, player_ids = load_data(
+        cfg.data.path
+    )
+
+    (
+        X_train,
+        X_val,
+        y_train,
+        y_val,
+        ids_train,
+        ids_val,
+    ) = train_test_split(
+        X,
+        y,
+        player_ids,
+        test_size=0.2,
+        random_state=42,
+        stratify=y,
+    )
+
+    splits = pd.DataFrame({
+        "player_id": pd.concat(
+            [
+                ids_train.reset_index(drop=True),
+                ids_val.reset_index(drop=True),
+            ],
+            ignore_index=True,
+        ),
+        "split": (
+            ["train"] * len(ids_train)
+            + ["validation"] * len(ids_val)
+        ),
+    })
+        # K-fold experiment
+    cv_history = validate(
+        cfg,
+        type=TYPE,
+        X=X_train,
+        y=y_train,
+        use_wandb=False,
+    )
+
+    # Final preprocessing
+    preprocessor = Preprocessor()
+
+    X_train = preprocessor.fit_transform(
+        X_train,
+        y_train,
+        feature_names,
+    )
+
+    X_val = preprocessor.transform(X_val)
+
+    history, trainer = run_training(
+        cfg,
+        type=TYPE,
+        data=(X_train, X_val, y_train, y_val),
+        use_wandb=use_wandb,
+    )
+
+
+    final_threshold = history["val_threshold"][-1]
+
+
+
+    save_run_bundle(
+        run_dir=run_dir,
+        trainer=trainer,
+        preprocessor=preprocessor,
+        feature_columns=preprocessor.feature_columns,
+        threshold=final_threshold,
+        cfg=cfg,
+        history=history,
+        cv_history=cv_history,
+        splits=splits,
+    )
 
 if __name__ == "__main__":
     train()
