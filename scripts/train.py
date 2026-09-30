@@ -1,6 +1,12 @@
 import argparse
 import torch
-from torch.utils.data import DataLoader, WeightedRandomSampler
+from torch.utils.data import (
+    BatchSampler,
+    DataLoader,
+    RandomSampler,
+    SequentialSampler,
+    WeightedRandomSampler,
+)
 
 from src.data import load_data, PlayerDataset
 from src.model import MLP
@@ -15,7 +21,45 @@ from pathlib import Path
 import json
 import numpy as np
 import matplotlib.pyplot as plt
+from src.runtime import configure_threads
 from src.utils import save_pr, save_roc
+
+
+def make_loader(
+    dataset,
+    batch_size,
+    shuffle=False,
+    sampler=None,
+    num_workers=0,
+    pin_memory=False,
+):
+    """DataLoader that fetches a whole batch per __getitem__ call.
+
+    Wrapping the sampler in a BatchSampler and passing batch_size=None turns
+    off DataLoader's automatic batching: instead of calling __getitem__ once
+    per row and collating 128 tiny tensors, it hands the dataset the whole
+    index list and gets a ready batch back. The sampling order is unchanged.
+    """
+    if sampler is None:
+        sampler = (
+            RandomSampler(dataset)
+            if shuffle
+            else SequentialSampler(dataset)
+        )
+
+    batch_sampler = BatchSampler(
+        sampler,
+        batch_size=batch_size,
+        drop_last=False,
+    )
+
+    return DataLoader(
+        dataset,
+        batch_size=None,
+        sampler=batch_sampler,
+        num_workers=num_workers,
+        pin_memory=pin_memory,
+    )
 def run_training(cfg, type, data, use_wandb=False ):
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -25,7 +69,9 @@ def run_training(cfg, type, data, use_wandb=False ):
     else:
         num_workers = 0
 
-    print(f"Using device: {device}")
+    n_threads = configure_threads(device)
+
+    print(f"Using device: {device} ({n_threads} threads)")
 
     X_train, X_test, y_train, y_test = data
 
@@ -80,20 +126,20 @@ def run_training(cfg, type, data, use_wandb=False ):
     
     
 
-    train_loader = DataLoader(
+    train_loader = make_loader(
         train_ds,
         batch_size=batch_size,
+        shuffle=shuffle_dataloader,
+        sampler=sampler,
         num_workers=num_workers,
         pin_memory=pin_memory,
-        shuffle=shuffle_dataloader,
-        sampler=sampler
     )
 
-    val_loader = DataLoader(
+    val_loader = make_loader(
         val_ds,
         batch_size=batch_size,
         num_workers=num_workers,
-        pin_memory=pin_memory
+        pin_memory=pin_memory,
     )
 
     model = MLP(

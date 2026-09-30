@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import torch
 from torch.utils.data import Dataset
@@ -19,18 +20,29 @@ NON_FEATURE_COLUMNS = [
 
 
 class PlayerDataset(Dataset):
+    """Feature matrix held as one tensor, indexed row-wise or batch-wise.
+
+    Converting to torch once in __init__ instead of per row in __getitem__
+    removes two tensor allocations per sample. __getitem__ also accepts a
+    list of indices, so a BatchSampler can fetch a whole batch in a single
+    indexing call (see make_loader in scripts/train.py).
+    """
+
     def __init__(self, X, y):
-        self.X = X
-        self.y = y.reshape(-1, 1)
+        self.X = torch.as_tensor(
+            np.ascontiguousarray(X),
+            dtype=torch.float32,
+        )
+        self.y = torch.as_tensor(
+            np.ascontiguousarray(y),
+            dtype=torch.float32,
+        ).reshape(-1, 1)
 
     def __len__(self):
-        return len(self.X)
+        return self.X.shape[0]
 
     def __getitem__(self, idx):
-        return (
-            torch.from_numpy(self.X[idx]),
-            torch.from_numpy(self.y[idx]),
-        )
+        return self.X[idx], self.y[idx]
 
 def prepare_feature_df(df: pd.DataFrame) -> pd.DataFrame:
     feature_df = df.drop(

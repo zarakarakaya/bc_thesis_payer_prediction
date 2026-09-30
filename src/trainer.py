@@ -3,6 +3,41 @@ from sklearn.metrics import accuracy_score, f1_score, confusion_matrix, precisio
 from sklearn.metrics import roc_curve, roc_auc_score, precision_recall_curve, auc
 
 import numpy as np
+
+def best_f1_threshold(probs, labels, thresholds):
+    """Max F1 over a threshold grid, computed in one pass.
+
+    Equivalent to looping over the grid and calling f1_score for each
+    threshold (zero_division=0), but sorts once and uses cumulative counts
+    instead of rescanning every row 99 times.
+    """
+    order = np.argsort(probs, kind="stable")
+    sorted_probs = probs[order]
+    sorted_labels = labels[order]
+
+    # positives among rows with prob strictly below each threshold
+    cum_pos = np.cumsum(sorted_labels)
+    total_pos = cum_pos[-1] if cum_pos.size else 0.0
+
+    below = np.searchsorted(sorted_probs, thresholds, side="left")
+    pos_below = np.where(below > 0, cum_pos[np.maximum(below - 1, 0)], 0.0)
+
+    tp = total_pos - pos_below
+    predicted_pos = probs.size - below
+
+    denominator = predicted_pos + total_pos
+    f1 = np.divide(
+        2.0 * tp,
+        denominator,
+        out=np.zeros_like(tp, dtype=float),
+        where=denominator > 0,
+    )
+
+    best = int(np.argmax(f1))
+
+    return float(f1[best]), float(thresholds[best])
+
+
 class Trainer:
     def __init__(
         self,
@@ -34,9 +69,9 @@ class Trainer:
             loss.backward()
             self.optimizer.step()
 
-            total_loss += loss.item() * x.size(0)
+            total_loss += loss.detach() * x.size(0)
 
-        return total_loss / len(train_loader.dataset)
+        return float(total_loss) / len(train_loader.dataset)
 
     def eval_epoch(self, val_loader):
         self.model.eval()
@@ -50,23 +85,21 @@ class Trainer:
                 logits = self.model(x)
                 probs = torch.sigmoid(logits)
                 loss = self.criterion(logits, y)
-                total_val_loss += loss.item() * x.size(0)
+                total_val_loss += loss.detach() * x.size(0)
                 all_probs.append(probs.cpu()) 
                 all_labels.append(y.cpu())
 
         all_probs = torch.cat(all_probs).numpy().flatten()
         all_labels = torch.cat(all_labels).numpy().flatten()
 
-        avg_val_loss = total_val_loss / len(val_loader.dataset)
+        avg_val_loss = float(total_val_loss) / len(val_loader.dataset)
         thresholds = np.linspace(0.01, 0.99, 99)
-        best_f1, val_threshold = -1.0, 0.5
-    
-        for t in thresholds:
-            preds = (all_probs >= t).astype(int)
-            f1 = f1_score(all_labels, preds, zero_division=0)
-            if f1 > best_f1:
-                best_f1, val_threshold = f1, t
-    
+        best_f1, val_threshold = best_f1_threshold(
+            all_probs,
+            all_labels,
+            thresholds,
+        )
+
         best_preds = (all_probs >= val_threshold).astype(int)
         acc = accuracy_score(all_labels, best_preds)
         precision = precision_score(all_labels, best_preds, zero_division=0)
